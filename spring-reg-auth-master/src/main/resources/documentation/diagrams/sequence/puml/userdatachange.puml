@@ -1,0 +1,40 @@
+@startuml
+
+autonumber
+actor User
+participant "Frontend" as Frontend
+participant "Backend" as Backend
+participant Database
+
+User -> Frontend: Войти в личный кабинет
+
+activate Frontend
+
+User -> Frontend: Выбрать опцию "Изменить профиль"
+Frontend -> Backend: Отправить запрос на изменение данных
+activate Backend
+
+Backend -> Database: Получить информацию о пользователе
+activate Database
+Database --> Backend: Информация о пользователе получена
+
+Backend -> Frontend: Отправить текущую информацию о пользователе
+deactivate Database
+
+Frontend -> User: Отобразить текущую информацию о пользователе
+User -> Frontend: Внести изменения в данные профиля
+Frontend -> Backend: Отправить запрос на обновление данных
+
+Backend -> Database: Обновить информацию о пользователе
+activate Database
+Database --> Backend: Информация обновлена
+
+Backend -> Frontend: Подтвердить успешное обновление
+deactivate Database
+
+Frontend --> User: Перенаправление на страницу подтверждения
+
+deactivate Backend
+deactivate Frontend
+
+@enduml

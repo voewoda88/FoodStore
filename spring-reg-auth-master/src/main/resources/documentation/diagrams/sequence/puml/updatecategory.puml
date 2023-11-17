@@ -1,0 +1,40 @@
+@startuml
+
+autonumber
+actor Admin
+participant "Frontend" as Frontend
+participant "Backend" as Backend
+participant Database
+
+Admin -> Frontend: Войти в админ-панель
+
+activate Frontend
+
+Admin -> Frontend: Выбрать опцию "Изменить категории"
+Frontend -> Backend: Отправить запрос на получение списка категорий
+activate Backend
+
+Backend -> Database: Получить список категорий
+activate Database
+Database --> Backend: Список категорий получен
+
+Backend -> Frontend: Отправить список категорий
+deactivate Database
+
+Frontend -> Admin: Отобразить список категорий
+Admin -> Frontend: Выбрать категорию для изменения
+Frontend -> Backend: Отправить запрос на изменение категории
+
+Backend -> Database: Обновить информацию о категории
+activate Database
+Database --> Backend: Информация о категории обновлена
+
+Backend -> Frontend: Подтвердить успешное обновление категории
+deactivate Database
+
+Frontend --> Admin: Перенаправление на страницу подтверждения
+
+deactivate Backend
+deactivate Frontend
+
+@enduml

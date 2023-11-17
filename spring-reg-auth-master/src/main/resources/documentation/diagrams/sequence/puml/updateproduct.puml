@@ -1,0 +1,40 @@
+@startuml
+
+autonumber
+actor Admin
+participant "Frontend" as Frontend
+participant "Backend" as Backend
+participant Database
+
+Admin -> Frontend: Войти в админ-панель
+
+activate Frontend
+
+Admin -> Frontend: Выбрать опцию "Изменить продукты"
+Frontend -> Backend: Отправить запрос на получение списка продуктов
+activate Backend
+
+Backend -> Database: Получить список продуктов
+activate Database
+Database --> Backend: Список продуктов получен
+
+Backend -> Frontend: Отправить список продуктов
+deactivate Database
+
+Frontend -> Admin: Отобразить список продуктов
+Admin -> Frontend: Выбрать продукт для изменения
+Frontend -> Backend: Отправить запрос на изменение продукта
+
+Backend -> Database: Обновить информацию о продукте
+activate Database
+Database --> Backend: Информация о продукте обновлена
+
+Backend -> Frontend: Подтвердить успешное обновление продукта
+deactivate Database
+
+Frontend --> Admin: Перенаправление на страницу подтверждения
+
+deactivate Backend
+deactivate Frontend
+
+@enduml
