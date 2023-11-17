@@ -1,5 +1,10 @@
 # Диаграммы активностей
 
+1. [Регистрация](#1)
+2. [Аторизация](#2)
+3. [Диаграммы активностей пользователя](#3)
+4. [Диаграммы активностей админинстратора](#4)
+
 ## 1. Регистрация
 
 ![](https://github.com/voewoda88/FoodStore/blob/master/spring-reg-auth-master/src/main/resources/documentation/diagrams/activity/img/img.png) 
