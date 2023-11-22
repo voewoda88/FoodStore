@@ -74,6 +74,40 @@ public class UserController {
         return "redirect:/login";
     }
 
+    @GetMapping("/profile")
+    String getProfileInfo(Model model) {
+        User user = (User)userService.loadUserByUsername(userService.getAuthentificateUser());
+        model.addAttribute("username", user.getUsername());
+        model.addAttribute("id", user.getId());
+
+        return "updateProfile";
+    }
+
+    @PostMapping("/profile")
+    String updateProfile(@ModelAttribute User user) {
+        if(!user.getPassword().equals(user.getPasswordConfirm())) {
+            return "redirect:/profile";
+        }
+
+        if(user.getPassword().equals(user.getUsername())) {
+            return "redirect:/profile";
+        }
+
+        if(!userService.saveUpdatedUser(user)){
+            return "redirect:/profile";
+        }
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/products")
+    public String getUserProducts(Model model) {
+        List<Product> productList = productService.allProducts();
+        model.addAttribute("products", productList);
+
+        return "userProducts";
+    }
+
     @GetMapping("/")
     public String getHomePage(Model model) {
         model.addAttribute("username", userService.getAuthentificateUser());
