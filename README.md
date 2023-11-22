@@ -13,12 +13,12 @@ Food Store предоставляет пользователю ассортим�
 
 ### Графический материал
 
-* Диаграммы активностей
-* Диаграмма развертывания
-* Диаграммы последовательности
-* Диаграммы состояний
-* Диаграмма компонентов
-* Диаграмма вариантов использования
+* [Диаграммы активностей](https://github.com/voewoda88/FoodStore/blob/master/spring-reg-auth-master/src/main/resources/documentation/diagrams/activity/activityDiagrams.md)
+* [Диаграмма развертывания](https://github.com/voewoda88/FoodStore/blob/master/spring-reg-auth-master/src/main/resources/documentation/diagrams/deployment/deployment.md)
+* [Диаграммы последовательности](https://github.com/voewoda88/FoodStore/blob/master/spring-reg-auth-master/src/main/resources/documentation/diagrams/sequence/sequence.md)
+* [Диаграммы состояний](https://github.com/voewoda88/FoodStore/blob/master/spring-reg-auth-master/src/main/resources/documentation/diagrams/state/state.md)
+* [Диаграмма компонентов](https://github.com/voewoda88/FoodStore/blob/master/spring-reg-auth-master/src/main/resources/documentation/diagrams/component/component.md)
+* [Диаграмма вариантов использования](https://github.com/voewoda88/FoodStore/blob/master/spring-reg-auth-master/src/main/resources/documentation/diagrams/usecases/usecases.md)
 
 ### Исходный код
 
