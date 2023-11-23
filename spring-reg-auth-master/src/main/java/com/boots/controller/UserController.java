@@ -75,7 +75,7 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    String getProfileInfo(Model model) {
+    public String getProfileInfo(Model model) {
         User user = (User)userService.loadUserByUsername(userService.getAuthentificateUser());
         model.addAttribute("username", user.getUsername());
         model.addAttribute("id", user.getId());
@@ -84,7 +84,7 @@ public class UserController {
     }
 
     @PostMapping("/profile")
-    String updateProfile(@ModelAttribute User user) {
+    public String updateProfile(@ModelAttribute User user) {
         if(!user.getPassword().equals(user.getPasswordConfirm())) {
             return "redirect:/profile";
         }
