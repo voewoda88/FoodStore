@@ -1,0 +1,51 @@
+@startuml
+
+autonumber
+actor Admin
+participant "Frontend" as Frontend
+participant "Backend" as Backend
+participant Database
+
+Admin -> Frontend: Войти в админ-панель
+
+activate Frontend
+
+Admin -> Frontend: Выбрать опцию "Просмотр и удаление пользователей"
+Frontend -> Backend: Отправить запрос на получение списка пользователей
+activate Backend
+
+Backend -> Database: Получить список пользователей
+activate Database
+Database --> Backend: Список пользователей получен
+
+Backend -> Frontend: Отправить список пользователей
+deactivate Database
+
+Frontend -> Admin: Отобразить список пользователей
+Admin -> Frontend: Выбрать пользователя для просмотра или удаления
+Frontend -> Backend: Отправить запрос на получение информации о пользователе
+
+Backend -> Database: Получить информацию о пользователе
+activate Database
+Database --> Backend: Информация о пользователе получена
+
+Backend -> Frontend: Отправить информацию о пользователе
+deactivate Database
+
+Frontend -> Admin: Отобразить информацию о пользователе
+Admin -> Frontend: Выбрать опцию "Удалить пользователя"
+Frontend -> Backend: Отправить запрос на удаление пользователя
+
+Backend -> Database: Удалить пользователя
+activate Database
+Database --> Backend: Пользователь удален
+
+Backend -> Frontend: Подтвердить успешное удаление пользователя
+deactivate Database
+
+Frontend --> Admin: Перенаправление на страницу подтверждения
+
+deactivate Backend
+deactivate Frontend
+
+@enduml

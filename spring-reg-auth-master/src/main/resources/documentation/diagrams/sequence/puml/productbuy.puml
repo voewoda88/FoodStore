@@ -1,0 +1,40 @@
+@startuml
+
+autonumber
+actor User
+participant "Frontend" as Frontend
+participant "Backend" as Backend
+participant Database
+
+User -> Frontend: Открыть страницу продукта
+
+activate Frontend
+
+User -> Frontend: Выбрать продукт для покупки
+Frontend -> Backend: Отправить запрос на покупку
+activate Backend
+
+Backend -> Database: Поиск информации о продукте
+activate Database
+Database --> Backend: Информация о продукте найдена
+
+Backend -> Frontend: Отправить информацию о продукте
+deactivate Database
+
+Frontend -> User: Отобразить информацию о продукте
+User -> Frontend: Подтвердить покупку продукта
+Frontend -> Backend: Отправить запрос на оформление покупки
+
+Backend -> Database: Обновить информацию о продукте и пользователе
+activate Database
+Database --> Backend: Информация обновлена
+
+Backend -> Frontend: Подтвердить успешную покупку
+deactivate Database
+
+Frontend --> User: Перенаправление на страницу подтверждения
+
+deactivate Backend
+deactivate Frontend
+
+@enduml
